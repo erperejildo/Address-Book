@@ -1,0 +1,73 @@
+<div class="table-data">
+  <input type="text" id="search" ng-model="search" placeholder="{{'search' | translate}}" />
+  <div id="header-table">
+    <div class="row-7" ng-click="order('name')">
+      {{'name' | translate}}
+      <span class="glyphicon" ng-show="predicate === 'name'" ng-class="{'glyphicon-menu-up':reverse,'glyphicon-menu-down':!reverse}"></span>
+    </div>
+    <div class="row-7" ng-click="order('company')">
+      {{'company' | translate}}
+      <span class="glyphicon" ng-show="predicate === 'company'" ng-class="{'glyphicon-menu-up':reverse,'glyphicon-menu-down':!reverse}"></span>
+    </div>
+    <div class="row-7" ng-click="order('address')">
+      {{'address' | translate}}
+      <span class="glyphicon" ng-show="predicate === 'address'" ng-class="{'glyphicon-menu-up':reverse,'glyphicon-menu-down':!reverse}"></span>
+    </div>
+    <div class="row-7" ng-click="order('phone')">
+      {{'phone' | translate}}
+      <span class="glyphicon" ng-show="predicate === 'phone'" ng-class="{'glyphicon-menu-up':reverse,'glyphicon-menu-down':!reverse}"></span>
+    </div>
+    <div class="row-7" ng-click="order('email')">
+      {{'email' | translate}}
+      <span class="glyphicon" ng-show="predicate === 'email'" ng-class="{'glyphicon-menu-up':reverse,'glyphicon-menu-down':!reverse}"></span>
+    </div>
+    <div class="row-7" ng-click="order('notes')">
+      {{'notes' | translate}}
+      <span class="glyphicon" ng-show="predicate === 'notes'" ng-class="{'glyphicon-menu-up':reverse,'glyphicon-menu-down':!reverse}"></span>
+    </div>
+    <div class="row-7">
+      <img class="flat" src="images/uk.png" ng-click="changeLanguage('EN')" />
+      <img class="flat" src="images/spain.png" ng-click="changeLanguage('ES')" />
+    </div>
+  </div>
+  <!-- inputs for save data -->
+  <div id="inputs">
+    <div class="row-7">
+      <input type="text" ng-model="save.name" />
+    </div>
+    <div class="row-7">
+      <input type="text" ng-model="save.company" />
+    </div>
+    <div class="row-7">
+      <input type="text" ng-model="save.address" />
+    </div>
+    <div class="row-7">
+      <input type="text" ng-model="save.phone" />
+    </div>
+    <div class="row-7">
+      <input type="text" ng-model="save.email" />
+    </div>
+    <div class="row-7">
+      <input type="text" ng-model="save.notes" />
+    </div>
+    <div class="row-7">
+      <div class="glyphicon glyphicon-plus btn btn-warning" aria-hidden="true" ng-class="{'btn-desactivate':save.name == '' || save.company == '' || save.address == '' || save.phone == '' || save.email == '' || save.notes == ''}" ng-click="addAddress()"></div>
+    </div>
+  </div>
+  <!-- save data -->
+  <div class="data-box" ng-repeat="address in addressBook | filter:search | orderBy:predicate:reverse track by $index" ng-class="{'grey-bg':$index % 2 != 0}">
+    <div ng-hide="row[$index]">
+      <div class="row-7">{{address.name}}</div>
+      <div class="row-7">{{address.company}}</div>
+      <div class="row-7">{{address.address}}</div>
+      <div class="row-7">{{address.phone}}</div>
+      <div class="row-7">{{address.email}}</div>
+      <div class="row-7 left-text">{{address.notes}}</div>
+      <div class="row-7"><div class="glyphicon glyphicon-remove btn btn-danger" aria-hidden="true" ng-click="askRemove($index)"></div></div>
+    </div>
+    <div class="sure" ng-show="row[$index]">{{'sure' | translate}}<br>
+      <div class="btn btn-warning" ng-click="removeAddress($index)">{{'yes' | translate}}</div>
+      <div class="btn btn-success" ng-click="askRemove($index)">{{'no' | translate}}</div>
+    </div>
+  </div>
+</div>

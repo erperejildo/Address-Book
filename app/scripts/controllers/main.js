@@ -63,8 +63,6 @@ angular.module('addressBookApp')
         $scope.addAddress = function() {
             if ($('.btn-desactivate').length == 0) {
                 $scope.addressBook.push($scope.save);
-                console.log($scope.save);
-                console.log($scope.addressBook);
                 localStorage.setItem('addressBook', JSON.stringify($scope.addressBook));
                 $scope.save = {
                     name: '',

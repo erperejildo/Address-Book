@@ -18,5 +18,5 @@ Running `grunt test` will run the unit tests with karma.
 ## Info
 
 This repository is a simple demo of an address book with AngularJS.<br />
-You could save, remove, order and search data. Also you could change language without page reload.<br />
+You can save, remove, order and search data. Also you can change language without page reload.<br />
 Url: http://danielrodriguez.eu/address-book/#/
